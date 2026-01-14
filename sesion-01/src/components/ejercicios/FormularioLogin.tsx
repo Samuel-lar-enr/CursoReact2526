@@ -114,7 +114,7 @@ function FormularioLogin() {
                 submit={true}
                 />
             </div>
-            <label></label>
+            <label > </label>
             
         </form>
    </div>

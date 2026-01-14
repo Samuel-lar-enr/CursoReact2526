@@ -4,6 +4,7 @@ import Saludo from './components/ejercicios/Saludo'
 import Tarjeta from './components/ejercicios/tarjeta'
 import FormularioUsuario from './components/ejercicios/FormularioUsuario'
 import GestionadorContactos from './components/ejercicios/GestionadorContactos'
+import FormularioLogin from './components/ejercicios/FormularioLogin'
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
 
         <GestionadorContactos />
         
+        <FormularioLogin />
           
       </main>
     </div>

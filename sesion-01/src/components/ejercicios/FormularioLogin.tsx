@@ -7,6 +7,7 @@
 //(opcional) contraseña con un minimo de caracteres
 
 import React, { useState } from 'react'
+import Boton from './Boton'
 
 interface Credenciales {
     email: string
@@ -19,7 +20,7 @@ function FormularioLogin() {
         email: '',
         password: ''
     })
-    const [errores, setErrores] = useState({})
+    const [errores, setErrores] = useState({email:"",password:""})
     const [showPassword, setShowPassword] = useState(false)
 
     //efectos
@@ -27,6 +28,37 @@ function FormularioLogin() {
     //funciones
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
+        alert("enviado...")
+        if(validarFormulario()){
+            console.log("login exitoso",credenciales)
+        }else{
+
+        }
+    }
+
+    const emailValido = (email:string):boolean => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return regex.test(email)
+    }
+    
+    const validarFormulario = ():boolean => {
+        const posiblesErrorres:Credenciales= {email:"",password:""}
+        if(!credenciales.email.trim()){
+            posiblesErrorres.email = "Error, falta un email"
+            
+        }else if (!emailValido(credenciales.email)){
+            posiblesErrorres.email = "Error, email no valido"
+            
+        }
+        if(!credenciales.password.trim()){
+            posiblesErrorres.password = "Error, falta un password"
+            
+        }else if (credenciales.password.length < 6){
+            posiblesErrorres.password = "Error, password debe tener al menos 6 caracteres"
+            
+        }
+        setErrores(posiblesErrorres)
+        return Object.keys(posiblesErrorres).length === 0
     }
 
   return (
@@ -51,17 +83,17 @@ function FormularioLogin() {
                 />
             </div>
             <div>
-                <label className='block text-sm font-medium mb-1'>Email:</label>
+                <label className='block text-sm font-medium mb-1'>Password:</label>
                 <input 
                 type={showPassword ? 'text' : 'password'}
                 className='w-full px-3 pt-2 rounded border focus:outline-none focus:ring-4y'  
                 placeholder='Introduce password'
-                value={credenciales.email}
+                value={credenciales.password}
                 required
                 onChange={(e)=>
                     setCredenciales({
                         ...credenciales,
-                        email: e.target.value
+                        password: e.target.value
                     } )
                 }
 
@@ -75,9 +107,14 @@ function FormularioLogin() {
                 >{showPassword ? "🙈" : "🙉"} 
             </button>
             <div>
-
+                <Boton
+                tipo="primary"
+                onClick={()=>handleSubmit}
+                texto='Enviar'
+                submit={true}
+                />
             </div>
-            
+            <label></label>
             
         </form>
    </div>

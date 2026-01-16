@@ -7,7 +7,6 @@ interface Usuario{
 
 
 import React, { useState } from 'react'
-import Tarjeta from './tarjeta'
 
 function FormularioUsuario() {
     const [usuario, setUsuario] = useState<Usuario>({

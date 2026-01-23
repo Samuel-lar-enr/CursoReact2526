@@ -1,9 +1,9 @@
 import React, { Suspense, useState } from 'react'
 import PlatosList from './components/PlatosList'
-import Header from './components/header'
 import LoadingFallback from './components/LoadingFallback'
 import { fetchPlatos } from './utils/api'
 import BuscarPlato from './components/BuscarPlato'
+import Header from './components/header'
 
 function App()  {
   //hooks

@@ -1,15 +1,24 @@
 //Crear un componente buscar que filtre por pulsación 
 //Por nombre de plato o ingrediente
 
-import React from 'react'
+import React, { useState } from 'react'
+
+
 
 const BuscarPlato = () => {
+
+  const [nombrePlato, setNombrePlato] = useState<string>("")
+
+  
+
   return (
-    <div>
-        <search>
-            
-        </search>
-    </div>
+    <form >
+        <input type="text" id="searchInput" placeholder="Buscar..." required
+        onChange={(e)=>{
+            setNombrePlato(e.target.value)
+        }} />
+        <button type="submit">🔍</button>
+    </form>
   )
 }
 
